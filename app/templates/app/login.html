@@ -1,0 +1,35 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Login{% endblock title %}
+{% block main-content %}
+<div class="container">
+ <div class="row my-3">
+  <div class="col-sm-6 offset-sm-3">
+   <h3>Login</h3>
+   <hr>
+   <form action="" method="POST" novalidate class="shadow p-5">
+    {% csrf_token %}
+    <div class="mb-3">
+   <label for="inputEmail4" class="form-label">Email</label>
+   <input type="email" class="form-control" id="inputEmail4" name="email">
+  </div>
+  <div class="mb-3">
+   <label for="inputPassword1" class="form-label">Password</label>
+   <input type="password" class="form-control" id="inputPassword1" name="password">
+  </div>
+  <div class="text-end">
+   <input type="submit" class="btn btn-danger"></button>
+  </div>
+  <br>
+  <div class="text-center text-primary fw-bold"><small>New in ShoppingX ? <a href="{% url 'customerregistration' %}"
+     class="text-danger">Regester now</a> </small></div>
+  {% if form.non_field_errors %}
+  {% for error in form.non_field_errors %}
+  <p class="alert alert-danger my-3">{{error}}</p>
+  {% endfor %}
+  {% endif %}
+ </form>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}

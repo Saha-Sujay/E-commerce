@@ -1,0 +1,41 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+  <div class="col-sm-3">
+    <div class="list-group">
+      
+
+      <a href="{% url 'mobile'  %}" class="list-group-item list-group-item-action">All Mobiles</a>
+      {% for m in mm %}
+      <a href="{% url 'mobiledata' m %}" class="list-group-item list-group-item-action">{{m}}</a>
+      {% endfor %}
+    
+      
+    </div>
+  </div>
+
+<!-- product list -->
+ 
+<div class="col-sm-9">
+{% for m in mobile %}
+<div class="card" style="width: 18rem; margin-right: 0px;">
+  <img src="{{m.image.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{m.title}}</h5>
+    <p class="card-text">{{m.discounted_price}}</p>
+    <a href="{% url 'product-detail' m.id %}" class="btn btn-primary">View Details</a>
+  </div>
+</div>
+
+
+  {% endfor %}
+</div>
+<!-- product list end -->
+    
+
+</div>
+</div>
+{% endblock main-content %}
